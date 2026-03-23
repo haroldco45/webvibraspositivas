@@ -17,7 +17,7 @@
             <ul class="nav-links">
                 <li><a href="#ingenieria">Ingeniería</a></li>
                 <li><a href="#ecosistema">Ecosistema</a></li>
-                <li><a href="#aliados">Aliados</a></li>
+                <li><a href="#aliados">Nuestros Aliados</a></li>
                 <li><a href="nda.html" class="btn-cta">Consultoría Tech</a></li>
             </ul>
         </nav>
@@ -27,11 +27,11 @@
         <div class="grid-overlay"></div>
         <div class="container">
             <div class="hero-content">
-                <div class="tag">Más que publicidad: Arquitectura de Software</div>
-                <h1>Desarrollo de <span class="text-gradient">Sistemas de Gestión</span> de Alto Nivel</h1>
-                <p>Especialistas en la creación de ecosistemas digitales, automatización de carteras y branding sonoro para el sector comercial y legal.</p>
+                <div class="tag">Arquitectura de Software & Creatividad</div>
+                <h1>Sistemas de Gestión <span class="text-gradient">Premium</span></h1>
+                <p>Especialistas en ecosistemas digitales, automatización de carteras y branding sonoro para marcas de alto impacto.</p>
                 <div class="hero-actions">
-                    <a href="#ecosistema" class="btn-main">Ver Casos de Éxito</a>
+                    <a href="#ecosistema" class="btn-main">Ver Soluciones</a>
                     <a href="nda.html" class="btn-sub">Agendar Demo Protegida</a>
                 </div>
             </div>
@@ -63,7 +63,7 @@
 
     <section id="ecosistema" class="solutions-ecosystem">
         <div class="container">
-            <h2 class="section-title">Ecosistema de Soluciones</h2>
+            <h2 class="section-title">Soluciones & Productos</h2>
             <div class="solutions-grid">
                 
                 <div class="solution-card">
@@ -81,17 +81,10 @@
                 </div>
 
                 <div class="solution-card">
-                    <div class="card-icon"><i data-lucide="trending-up"></i></div>
-                    <h3>FinTech / Cartera</h3>
-                    <p>Automatización de procesos de cobro y visualización de activos (Cartera 02 - Datos Protegidos).</p>
-                    <a href="nda.html" class="btn-card">Demo Bajo NDA <i data-lucide="shield-check"></i></a>
-                </div>
-
-                <div class="solution-card">
                     <div class="price-tag">$100k + $50k Anual</div>
                     <div class="card-icon"><i data-lucide="contact-2"></i></div>
                     <h3>Tarjetas Digitales</h3>
-                    <p>Diseño profesional ($100k) con mantenimiento anual ($50k). Experiencia interactiva 24/7.</p>
+                    <p>Sustituya el papel por una experiencia interactiva 24/7 con enlaces directos.</p>
                     <a href="https://wa.me/573117700431?text=Hola Harold, quiero mi Tarjeta Digital ($100k + $50k anual)" class="btn-card">Lo quiero ya <i data-lucide="zap"></i></a>
                 </div>
 
@@ -99,9 +92,17 @@
                     <div class="price-tag">Desde $350k</div>
                     <div class="card-icon"><i data-lucide="music"></i></div>
                     <h3>Audio Branding</h3>
-                    <p>Composición de jingles originales. Posicionamiento sonoro de marca (Ej: Solo Pizza).</p>
-                    <div class="audio-wave"><span></span><span></span><span></span><span></span><span></span></div>
-                    <a href="https://haroldco45.github.io/solopizza/" target="_blank" class="btn-card">Escuchar Jingle <i data-lucide="play-circle"></i></a>
+                    <p>Composición de jingles originales. Escucha nuestro éxito para <strong>Solo Pizza</strong> aquí mismo:</p>
+                    
+                    <div class="audio-player">
+                        <audio id="jingle-audio" src="https://haroldco45.github.io/solopizza/audio/jingle.mp3"></audio>
+                        <button onclick="togglePlay()" id="play-btn" class="play-circle-btn">
+                            <i data-lucide="play-circle"></i>
+                        </button>
+                        <div class="audio-wave"><span></span><span></span><span></span><span></span></div>
+                    </div>
+
+                    <a href="https://haroldco45.github.io/solopizza/" target="_blank" class="btn-card">Ver Proyecto Completo <i data-lucide="external-link"></i></a>
                 </div>
 
             </div>
@@ -110,13 +111,21 @@
 
     <section id="aliados" class="partners">
         <div class="container">
-            <h2 class="section-label">Marcas que Confían en Nosotros</h2>
-            <div class="partner-logos">
-                <div class="partner">DISTRILECO</div>
-                <div class="partner">SUPERARROZ</div>
-                <div class="partner">VISTAHERMOSA</div>
-                <div class="partner">SOLO PIZZA</div>
-                <div class="partner">ASETEC HM</div>
+            <h2 class="section-label">Nuestros Aliados</h2>
+            <p class="section-subtitle">Empresas y marcas que confían en la ingeniería de Vibras Positivas</p>
+            <div class="partner-grid">
+                <div class="partner-item">DISTRILECO</div>
+                <div class="partner-item">SUPERARROZ</div>
+                <div class="partner-item">VISTAHERMOSA</div>
+                <div class="partner-item">CRIOLLITAS</div>
+                <div class="partner-item">AREPAS DON HUEVO</div>
+                <div class="partner-item">ALIMENTOS TITAN</div>
+                <div class="partner-item">CHEF MAURICIO MARIN</div>
+                <div class="partner-item">POLLO HAR-ANA</div>
+                <div class="partner-item">RESTAURANTE PARGO ROJO</div>
+                <div class="partner-item">VELEZ RIVERO ABOGADOS</div>
+                <div class="partner-item">ASETEC HM</div>
+                <div class="partner-item">SOLO PIZZA</div>
             </div>
         </div>
     </section>
@@ -134,6 +143,26 @@
         </div>
     </footer>
 
-    <script>lucide.createIcons();</script>
+    <script>
+        lucide.createIcons();
+        
+        // Lógica del Reproductor de Audio
+        const audio = document.getElementById('jingle-audio');
+        const playBtn = document.getElementById('play-btn');
+        const wave = document.querySelector('.audio-wave');
+
+        function togglePlay() {
+            if (audio.paused) {
+                audio.play();
+                playBtn.innerHTML = '<i data-lucide="pause-circle"></i>';
+                wave.style.display = 'flex';
+            } else {
+                audio.pause();
+                playBtn.innerHTML = '<i data-lucide="play-circle"></i>';
+                wave.style.display = 'none';
+            }
+            lucide.createIcons();
+        }
+    </script>
 </body>
 </html>
