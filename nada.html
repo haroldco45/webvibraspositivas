@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de NDA | Vibras Positivas</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .nda-container { display: grid; grid-template-columns: 1fr 1.2fr; gap: 30px; padding: 120px 0 50px; }
+        .form-box { background: rgba(255,255,255,0.03); padding: 30px; border-radius: 15px; border: 1px solid rgba(255,255,255,0.1); }
+        .preview-box { background: #fff; color: #333; padding: 40px; border-radius: 8px; font-family: 'Courier New', Courier, monospace; font-size: 0.85rem; height: 600px; overflow-y: auto; box-shadow: 0 20px 40px rgba(0,0,0,0.5); }
+        input, select { width: 100%; padding: 12px; margin: 10px 0 20px; background: rgba(0,0,0,0.2); border: 1px solid #334155; color: #fff; border-radius: 5px; }
+        label { font-size: 0.9rem; color: var(--primary); font-weight: bold; }
+        .btn-print { background: var(--primary); color: #000; border: none; padding: 15px; width: 100%; border-radius: 5px; font-weight: 800; cursor: pointer; }
+        @media (max-width: 900px) { .nda-container { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav class="container">
+            <div class="logo">Vibras<span>Positivas</span></div>
+            <a href="index.html" style="color:#fff; text-decoration:none;"><i data-lucide="arrow-left"></i> Volver</a>
+        </nav>
+    </header>
+
+    <main class="container nda-container">
+        <div class="form-box">
+            <h2 style="margin-bottom: 20px;">Registro de Acceso</h2>
+            <p style="color:var(--text-dim); font-size:0.9rem; margin-bottom:20px;">Complete sus datos para generar el Acuerdo de Confidencialidad legal.</p>
+            
+            <label>Nombre Completo / Empresa</label>
+            <input type="text" id="nombre" placeholder="Ej: Juan Pérez o Empresa SAS" oninput="updateNDA()">
+
+            <label>NIT / Cédula</label>
+            <input type="text" id="documento" placeholder="Número de identificación" oninput="updateNDA()">
+
+            <label>Representante Legal (Si aplica)</label>
+            <input type="text" id="rep" placeholder="Nombre del representante" oninput="updateNDA()">
+
+            <label>Correo Electrónico</label>
+            <input type="email" placeholder="correo@ejemplo.com">
+
+            <button class="btn-print" onclick="window.print()">GENERAR PDF Y FIRMAR</button>
+        </div>
+
+        <div class="preview-box" id="nda-text">
+            <h3 style="text-align: center;">ACUERDO DE CONFIDENCIALIDAD (NDA)</h3>
+            <br>
+            <p>ENTRE LOS SUSCRITOS:</p>
+            <p>1. <strong>HAROLD AUGUSTO MARIN MACHADO</strong> (VIBRAS POSITIVAS), CC 4.712.484, como EL DIVULGADOR.</p>
+            <p>2. <strong id="p-nombre">[NOMBRE DEL RECEPTOR]</strong>, con identificación <strong id="p-doc">[DOCUMENTO]</strong>, representado por <strong id="p-rep">[REPRESENTANTE]</strong>, como EL RECEPTOR.</p>
+            <br>
+            <p><strong>OBJETO:</strong> Proteger la información técnica y financiera de los sistemas de <strong>VIBRAS POSITIVAS</strong>.</p>
+            <p><strong>OBLIGACIONES:</strong> El Receptor no podrá copiar, divulgar ni usar el software o datos para fines ajenos a la evaluación comercial.</p>
+            <p><strong>DURACIÓN:</strong> 2 años a partir de la firma.</p>
+            <br><br>
+            <p>Firma Divulgador: _______________________</p>
+            <br>
+            <p>Firma Receptor: _______________________</p>
+        </div>
+    </main>
+
+    <script>
+        lucide.createIcons();
+        function updateNDA() {
+            document.getElementById('p-nombre').innerText = document.getElementById('nombre').value || '[NOMBRE DEL RECEPTOR]';
+            document.getElementById('p-doc').innerText = document.getElementById('documento').value || '[DOCUMENTO]';
+            document.getElementById('p-rep').innerText = document.getElementById('rep').value || '[REPRESENTANTE]';
+        }
+    </script>
+</body>
+</html>
